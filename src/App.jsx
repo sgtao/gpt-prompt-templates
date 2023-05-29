@@ -1,9 +1,11 @@
 import './App.css';
+import PersistentDrawerLeft from './components/PersistentDrawerLeft';
 
 function App() {
-  const title = "gpt-prompt-templates"
   return (
-    <header>{title}</header>
+    <div>
+      <PersistentDrawerLeft />
+    </div>
   );
 }
 
