@@ -1,5 +1,14 @@
-# Getting Started with Create React App
+# gpt-prompt-templates
 
+## 概要
+- ChatGPTなど対話型AI向けのプロンプト生成を補助したい
+
+
+## LICENSE
+- MIT License.
+
+
+## setting
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
