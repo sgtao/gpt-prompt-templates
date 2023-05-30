@@ -1,5 +1,6 @@
 // PersistentDrawerLeft.jsx
 import * as React from "react";
+import { useEffect, useRef, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -20,6 +21,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ArticleIcon from "@mui/icons-material/Article";
 import TaskIcon from "@mui/icons-material/Task";
 import HomeIcon from "@mui/icons-material/Home";
+import Container from "@mui/material/Container";
 
 const drawerWidth = 240;
 
@@ -80,7 +82,16 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-
+  const [top, setTop] = useState();
+  const summarizationRef = useRef(null);
+  useEffect(() => {
+    setTop([String(summarizationRef.current.getBoundingClientRect()["top"])]);
+  }, [summarizationRef]);
+  const scroll = ['top'];
+  const onClickItem = (idx) => {
+    const scrollTop = Number(scroll[idx]) - 80;
+    window.scrollTo({ top: scrollTop, behavior: "smooth" });
+  };
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
@@ -144,11 +155,11 @@ export default function PersistentDrawerLeft() {
             "Reasoning",
           ].map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() => onClickItem(index)} >
                 <ListItemIcon>
                   <ArticleIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={`${index + 1}. ` + text} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -169,12 +180,18 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
+        <header title="Sample" scroll={top}></header>
         <Typography variant="h4" gutterBottom>
           プロンプト生成を補助する
         </Typography>
         <Typography paragraph>
           左メニューからテンプレートを選び、独自の入力をすることで、プロンプトに貼り付け可能な文章を表示する
         </Typography>
+        <Container component="div" className="min-h-screen mt-28">
+          <Container className="mt-10 border rounded" ref={summarizationRef}>
+            <div>Summarization</div>
+          </Container>
+        </Container>
       </Main>
     </Box>
   );
