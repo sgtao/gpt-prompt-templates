@@ -1,5 +1,5 @@
 import './App.css';
-import PersistentDrawerLeft from './components/PersistentDrawerLeft';
+import { PersistentDrawerLeft } from './components/index';
 
 function App() {
   return (

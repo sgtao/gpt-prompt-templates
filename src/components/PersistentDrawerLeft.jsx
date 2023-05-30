@@ -1,7 +1,7 @@
 // PersistentDrawerLeft.jsx
 import * as React from "react";
-import { useEffect, useRef, useState } from "react";
 import { styled, useTheme } from "@mui/material/styles";
+import { Link as Scroll } from "react-scroll";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -19,9 +19,9 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import ArticleIcon from "@mui/icons-material/Article";
-import TaskIcon from "@mui/icons-material/Task";
 import HomeIcon from "@mui/icons-material/Home";
 import Container from "@mui/material/Container";
+import { Summarization } from "./index";
 
 const drawerWidth = 240;
 
@@ -82,15 +82,18 @@ export default function PersistentDrawerLeft() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
-  const [top, setTop] = useState();
-  const summarizationRef = useRef(null);
-  useEffect(() => {
-    setTop([String(summarizationRef.current.getBoundingClientRect()["top"])]);
-  }, [summarizationRef]);
-  const scroll = ['top'];
-  const onClickItem = (idx) => {
-    const scrollTop = Number(scroll[idx]) - 80;
-    window.scrollTo({ top: scrollTop, behavior: "smooth" });
+  const menuList = [
+    "summarization",
+    "questionAnswering",
+    "classification",
+    "insertion",
+    "rollPlay",
+    "reasoning",
+  ];
+  const onClickItem = (textId) => {
+    //指定位置までスクロールする
+    document.getElementById(textId).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    setOpen(false);
   };
   return (
     <Box sx={{ display: "flex" }}>
@@ -135,42 +138,24 @@ export default function PersistentDrawerLeft() {
         </DrawerHeader>
         <Divider />
         <List>
-          <ListItem key="Home" disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <HomeIcon />
-              </ListItemIcon>
-              <ListItemText primary="Home" />
-            </ListItemButton>
-          </ListItem>
-        </List>
-        <Divider />
-        <List>
-          {[
-            "Summarization",
-            "Question-Answering",
-            "Classification",
-            "Insertion",
-            "Roll play",
-            "Reasoning",
-          ].map((text, index) => (
-            <ListItem key={text} disablePadding>
-              <ListItemButton onClick={() => onClickItem(index)} >
+          <Scroll to={"top"} smooth>
+            <ListItem key="Home" disablePadding>
+              <ListItemButton onClick={() => onClickItem("top")}>
                 <ListItemIcon>
-                  <ArticleIcon />
+                  <HomeIcon />
                 </ListItemIcon>
-                <ListItemText primary={`${index + 1}. ` + text} />
+                <ListItemText primary="Home" />
               </ListItemButton>
             </ListItem>
-          ))}
+          </Scroll>
         </List>
         <Divider />
         <List>
-          {["Zero-Shot Detection"].map((text, index) => (
+          {menuList.map((text, index) => (
             <ListItem key={text} disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={() => onClickItem(text)}>
                 <ListItemIcon>
-                  <TaskIcon />
+                  <ArticleIcon />
                 </ListItemIcon>
                 <ListItemText primary={text} />
               </ListItemButton>
@@ -178,19 +163,32 @@ export default function PersistentDrawerLeft() {
           ))}
         </List>
       </Drawer>
-      <Main open={open}>
+      <Main open={open} id="top">
         <DrawerHeader />
-        <header title="Sample" scroll={top}></header>
+        <header title="Sample"></header>
         <Typography variant="h4" gutterBottom>
           プロンプト生成を補助する
         </Typography>
         <Typography paragraph>
           左メニューからテンプレートを選び、独自の入力をすることで、プロンプトに貼り付け可能な文章を表示する
         </Typography>
-        <Container component="div" className="min-h-screen mt-28">
-          <Container className="mt-10 border rounded" ref={summarizationRef}>
-            <div>Summarization</div>
-          </Container>
+        <Container id="summarization">
+          <Summarization title="Summarization" />
+        </Container>
+        <Container id="questionAnswering">
+          <Summarization title="QuestionAnswering" />
+        </Container>
+        <Container id="classification">
+          <Summarization title="Classification" />
+        </Container>
+        <Container id="insertion">
+          <Summarization title="Insertion" />
+        </Container>
+        <Container id="rollPlay">
+          <Summarization title="RollPlay" />
+        </Container>
+        <Container id="reasoning">
+          <Summarization title="Reasoning" />
         </Container>
       </Main>
     </Box>
