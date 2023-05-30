@@ -73,8 +73,7 @@ const DrawerHeader = styled("div")(({ theme }) => ({
 export default function PersistentDrawerLeft() {
   const title = "gpt-prompt-templates";
   const theme = useTheme();
-  const [open, setOpen] = React.useState(false);
-
+  const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -139,12 +138,12 @@ export default function PersistentDrawerLeft() {
         <Divider />
         <List>
           <Scroll to={"top"} smooth>
-            <ListItem key="Home" disablePadding>
+            <ListItem key="Top" disablePadding>
               <ListItemButton onClick={() => onClickItem("top")}>
                 <ListItemIcon>
                   <HomeIcon />
                 </ListItemIcon>
-                <ListItemText primary="Home" />
+                <ListItemText primary="Top" />
               </ListItemButton>
             </ListItem>
           </Scroll>
@@ -170,7 +169,8 @@ export default function PersistentDrawerLeft() {
           プロンプト生成を補助するアプリ：
         </Typography>
         <Typography paragraph>
-          左メニューでテンプレートを選び独自の入力をすることで、プロンプトに貼り付け可能な文章を表示します。
+          左メニューのテンプレートを選び独自の入力をすることで、プロンプトに貼り付け可能な文章を表示します。
+          テンプレートの解説を読んで、ご利用ください。
         </Typography>
         <Container id="summarization">
           <Summarization title="Summarization" />
