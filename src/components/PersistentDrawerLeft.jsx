@@ -21,7 +21,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ArticleIcon from "@mui/icons-material/Article";
 import HomeIcon from "@mui/icons-material/Home";
 import Container from "@mui/material/Container";
-import { Summarization, QuestionAnswering, BlankTemplate } from "./index";
+import { Summarization, QuestionAnswering, Classification, BlankTemplate } from "./index";
 
 const drawerWidth = 240;
 
@@ -179,7 +179,7 @@ export default function PersistentDrawerLeft() {
           <QuestionAnswering title="QuestionAnswering" />
         </Container>
         <Container id="classification">
-          <BlankTemplate title="Classification" />
+          <Classification title="Classification" />
         </Container>
         <Container id="insertion">
           <BlankTemplate title="Insertion" />
