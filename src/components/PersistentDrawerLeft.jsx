@@ -166,11 +166,11 @@ export default function PersistentDrawerLeft() {
       <Main open={open} id="top">
         <DrawerHeader />
         <header title="Sample"></header>
-        <Typography variant="h4" gutterBottom>
-          プロンプト生成を補助する
+        <Typography variant="h5" gutterBottom>
+          プロンプト生成を補助するアプリ：
         </Typography>
         <Typography paragraph>
-          左メニューからテンプレートを選び、独自の入力をすることで、プロンプトに貼り付け可能な文章を表示する
+          左メニューでテンプレートを選び独自の入力をすることで、プロンプトに貼り付け可能な文章を表示します。
         </Typography>
         <Container id="summarization">
           <Summarization title="Summarization" />
