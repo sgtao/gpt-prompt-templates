@@ -21,7 +21,7 @@ import ListItemText from "@mui/material/ListItemText";
 import ArticleIcon from "@mui/icons-material/Article";
 import HomeIcon from "@mui/icons-material/Home";
 import Container from "@mui/material/Container";
-import { Summarization } from "./index";
+import { Summarization, QuestionAnswering, BlankTemplate } from "./index";
 
 const drawerWidth = 240;
 
@@ -176,19 +176,19 @@ export default function PersistentDrawerLeft() {
           <Summarization title="Summarization" />
         </Container>
         <Container id="questionAnswering">
-          <Summarization title="QuestionAnswering" />
+          <QuestionAnswering title="QuestionAnswering" />
         </Container>
         <Container id="classification">
-          <Summarization title="Classification" />
+          <BlankTemplate title="Classification" />
         </Container>
         <Container id="insertion">
-          <Summarization title="Insertion" />
+          <BlankTemplate title="Insertion" />
         </Container>
         <Container id="rollPlay">
-          <Summarization title="RollPlay" />
+          <BlankTemplate title="RollPlay" />
         </Container>
         <Container id="reasoning">
-          <Summarization title="Reasoning" />
+          <BlankTemplate title="Reasoning" />
         </Container>
       </Main>
     </Box>

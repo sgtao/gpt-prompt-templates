@@ -1,4 +1,4 @@
-// Summarization.jsx
+// QuestionAnswering.jsx
 import * as React from "react";
 import { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -10,7 +10,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Modal from "@mui/material/Modal";
-import Link from '@mui/material/Link';
+import Link from "@mui/material/Link";
+import Grid from "@mui/material/Grid";
 
 const styleModal = {
   position: "absolute",
@@ -24,22 +25,27 @@ const styleModal = {
   p: 4,
 };
 
-export default function Summarization(props) {
+export default function QuestionAnswering(props) {
   const titleContents = String(props.title);
-  const [text, setText] = useState("");
-  const [convtext, setConvtext] = useState("");
-  const handleChange = (e) => {
+  const [question, setQuestion] = useState("");
+  const changeQuestion = (e) => {
     const result = e.target.value;
     if (result === "") {
-      setText("");
+      setQuestion("");
     } else {
-      setText(e.target.value);
+      setQuestion(e.target.value);
     }
   };
-  const onClickConvert = (originalText) => {
-    const convertedText = originalText;
-    console.log(convertedText);
-    setConvtext(convertedText);
+  const [context, setContext] = useState("");
+  const changeContext = (e) => {
+    const result = e.target.value;
+    if (result === "") {
+      setContext("");
+    } else {
+      setContext(e.target.value);
+    }
+  };
+  const onClickConvert = () => {
     setOpen(true);
   };
   const [open, setOpen] = React.useState(false);
@@ -65,9 +71,9 @@ export default function Summarization(props) {
                 color="text.secondary"
                 gutterBottom
               >
-                Summarizationでは要約指示のプロンプトを生成します（
+                QuestionAnsweringでは前提となるコンテンツに対する質問プロンプトを生成します（
                 <Link
-                  href="https://www.promptingguide.ai/jp/introduction/examples#%E3%83%86%E3%82%AD%E3%82%B9%E3%83%88%E8%A6%81%E7%B4%84"
+                  href="https://www.promptingguide.ai/jp/introduction/examples#%E8%B3%AA%E5%95%8F%E5%BF%9C%E7%AD%94"
                   target="_blank"
                 >
                   解説
@@ -75,21 +81,34 @@ export default function Summarization(props) {
                 ）
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                入力欄に要約したい文書を貼り付けて『Convert』ボタンをクリックしてください。
+                質問文(Question)と前提(Contents)を入力して『Convert』ボタンをクリックしてください。
               </Typography>
               <Container sx={{ margin: "10px" }}>
-                <Button variant="outlined" onClick={() => onClickConvert(text)}>
-                  Convert
-                </Button>
+                <Grid container spacing={2} sx={{ margin: "10px" }}>
+                  <Grid item xs={2}>
+                    <Button variant="outlined" onClick={() => onClickConvert()}>
+                      Convert
+                    </Button>
+                  </Grid>
+                  <Grid item xs={10}>
+                    <TextField
+                      sx={{ width: "90%" }}
+                      label="Question"
+                      variant="outlined"
+                      value={question}
+                      onChange={changeQuestion}
+                    />
+                  </Grid>
+                </Grid>
               </Container>
-              <Container>
+              <Container sx={{ margin: "10px" }}>
                 <TextField
                   sx={{ m: 1, width: "90%" }}
-                  label="Original Contents"
+                  label="Contents"
                   multiline
-                  rows={8}
-                  value={text}
-                  onChange={handleChange}
+                  rows={4}
+                  value={context}
+                  onChange={changeContext}
                 />
               </Container>
             </CardContent>
@@ -107,11 +126,15 @@ export default function Summarization(props) {
             プロンプト例：
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: "2rem" }}>
-            次のテキストを200文字以内で説明してください。
+            テキストに基づいて下記質問に答えてください。もし答えがない場合には、「私は知らない」と答えてください。
             <br />
             ## テキスト：
             <br />
-            {convtext}
+            {context}
+            <br />
+            ## 質問：
+            <br />
+            {question}
           </Typography>
         </Box>
       </Modal>
