@@ -162,11 +162,11 @@ export default function PersistentDrawerLeft() {
           ))}
         </List>
       </Drawer>
-      <Main open={open} id="top">
+      <Main open={open}>
         <DrawerHeader />
-        <header title="Sample"></header>
+        <header title="gpt-prompt-templates"  id="top">プロンプトテンプレート</header>
         <Typography variant="h5" gutterBottom>
-          プロンプト生成を補助するアプリ：
+          プロンプト生成を補助するアプリです：
         </Typography>
         <Typography paragraph>
           左メニューのテンプレートを選び独自の入力をすることで、プロンプトに貼り付け可能な文章を表示します。
