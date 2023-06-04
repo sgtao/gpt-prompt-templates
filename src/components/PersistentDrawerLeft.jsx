@@ -28,6 +28,7 @@ import {
   Insertion,
   RollPlay,
   CodeGeneration,
+  Reasoning,
   BlankTemplate,
 } from "./index";
 
@@ -204,7 +205,7 @@ export default function PersistentDrawerLeft() {
           <CodeGeneration title="CodeGeneration" />
         </Container>
         <Container id="reasoning">
-          <BlankTemplate title="Reasoning" />
+          <Reasoning title="Reasoning" />
         </Container>
       </Main>
     </Box>
