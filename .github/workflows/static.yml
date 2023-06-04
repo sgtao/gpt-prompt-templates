@@ -40,3 +40,4 @@ jobs:
           # keep_files: true
           user_name: github-actions
           user_email: github-actions@github.com
+      - run: npm deploy
