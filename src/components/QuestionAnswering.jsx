@@ -83,23 +83,23 @@ export default function QuestionAnswering(props) {
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
                 質問文(Question)と前提(Contents)を入力して『Convert』ボタンをクリックしてください。
               </Typography>
-              <Container sx={{ margin: "10px" }}>
-                <Grid container spacing={2} sx={{ margin: "10px" }}>
-                  <Grid item xs={2}>
-                    <Button variant="outlined" onClick={() => onClickConvert()}>
-                      Convert
-                    </Button>
-                  </Grid>
-                  <Grid item xs={10}>
-                    <TextField
-                      sx={{ width: "90%" }}
-                      label="Question"
-                      variant="outlined"
-                      value={question}
-                      onChange={changeQuestion}
-                    />
-                  </Grid>
-                </Grid>
+              <Container
+                sx={{
+                  margin: "10px",
+                  display: "flex",
+                  justifyContent: "space-between",
+                }}
+              >
+                <Button variant="outlined" onClick={() => onClickConvert()}>
+                  Convert
+                </Button>
+                <TextField
+                  sx={{ width: "90%" }}
+                  label="Question"
+                  variant="outlined"
+                  value={question}
+                  onChange={changeQuestion}
+                />
               </Container>
               <Container sx={{ margin: "10px" }}>
                 <TextField

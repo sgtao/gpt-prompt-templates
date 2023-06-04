@@ -107,8 +107,9 @@ export default function Summarization(props) {
             プロンプト例：
           </Typography>
           <Typography id="modal-modal-description" sx={{ mt: "2rem" }}>
-            次のテキストを200文字以内で説明してください。
-            <br />
+            次のテキストを一文もしくは200文字以内で説明してください。<br />
+            一文で示す場合は、下のフォーマットでまとめてください<br />
+            - 『いつ、どこで、だれが、何をした。（理由、どうなる／どうやる）』を具体的に記してください<br />
             ## テキスト：
             <br />
             {convtext}
