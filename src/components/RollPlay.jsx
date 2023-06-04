@@ -72,7 +72,7 @@ export default function Classification(props) {
                 color="text.secondary"
                 gutterBottom
               >
-                RollPlayは、AI に役割を与えて会話を進めさせるテクニックです
+                RollPlayは、AI に役割を与えて会話を進めさせるテクニックです（
                 <Link
                   href="https://www.promptingguide.ai/jp/introduction/examples#%E4%BC%9A%E8%A9%B1"
                   target="_blank"
@@ -82,7 +82,7 @@ export default function Classification(props) {
                 ）
               </Typography>
               <Typography sx={{ mb: 1.5 }} color="text.secondary">
-                会話のシチュエーション、テーマ、登場人物などを入力して『Convert』ボタンをクリックしてください。
+                会話のテーマ、登場人物などを入力して『Convert』ボタンをクリックしてください。
               </Typography>
               <Container sx={{ margin: "10px" }}>
                 <Button variant="outlined" onClick={() => onClickConvert()}>

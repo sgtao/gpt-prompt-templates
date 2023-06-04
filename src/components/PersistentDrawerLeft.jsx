@@ -27,6 +27,7 @@ import {
   Classification,
   Insertion,
   RollPlay,
+  CodeGeneration,
   BlankTemplate,
 } from "./index";
 
@@ -94,6 +95,7 @@ export default function PersistentDrawerLeft() {
     "classification",
     "insertion",
     "rollPlay",
+    "codeGeneration",
     "reasoning",
   ];
   const onClickItem = (textId) => {
@@ -197,6 +199,9 @@ export default function PersistentDrawerLeft() {
         </Container>
         <Container id="rollPlay">
           <RollPlay title="RollPlay" />
+        </Container>
+        <Container id="codeGeneration">
+          <CodeGeneration title="CodeGeneration" />
         </Container>
         <Container id="reasoning">
           <BlankTemplate title="Reasoning" />
