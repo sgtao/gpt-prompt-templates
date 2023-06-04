@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/gpt-prompt-templates/static/css/main.073c9b0a.css",
-    "main.js": "/gpt-prompt-templates/static/js/main.b87cd569.js",
+    "main.js": "/gpt-prompt-templates/static/js/main.03fd834b.js",
     "static/js/787.5195973c.chunk.js": "/gpt-prompt-templates/static/js/787.5195973c.chunk.js",
     "index.html": "/gpt-prompt-templates/index.html",
     "main.073c9b0a.css.map": "/gpt-prompt-templates/static/css/main.073c9b0a.css.map",
-    "main.b87cd569.js.map": "/gpt-prompt-templates/static/js/main.b87cd569.js.map",
+    "main.03fd834b.js.map": "/gpt-prompt-templates/static/js/main.03fd834b.js.map",
     "787.5195973c.chunk.js.map": "/gpt-prompt-templates/static/js/787.5195973c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.b87cd569.js"
+    "static/js/main.03fd834b.js"
   ]
 }
