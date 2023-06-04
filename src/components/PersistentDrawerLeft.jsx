@@ -26,6 +26,7 @@ import {
   QuestionAnswering,
   Classification,
   Insertion,
+  RollPlay,
   BlankTemplate,
 } from "./index";
 
@@ -195,7 +196,7 @@ export default function PersistentDrawerLeft() {
           <Insertion title="Insertion" />
         </Container>
         <Container id="rollPlay">
-          <BlankTemplate title="RollPlay" />
+          <RollPlay title="RollPlay" />
         </Container>
         <Container id="reasoning">
           <BlankTemplate title="Reasoning" />
