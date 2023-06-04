@@ -29,7 +29,7 @@ import {
   RollPlay,
   CodeGeneration,
   Reasoning,
-  BlankTemplate,
+  AbstractInfo,
 } from "./index";
 
 const drawerWidth = 240;
@@ -186,6 +186,9 @@ export default function PersistentDrawerLeft() {
           左メニューのテンプレートを選び独自の入力をすることで、プロンプトに貼り付け可能な文章を表示します。
           テンプレートの解説を読んで、ご利用ください。
         </Typography>
+        <Container>
+          <AbstractInfo title="Abstract" />
+        </Container>
         <Container id="summarization">
           <Summarization title="Summarization" />
         </Container>
