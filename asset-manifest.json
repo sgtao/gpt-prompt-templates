@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/static/css/main.073c9b0a.css",
-    "main.js": "/static/js/main.fda4dac5.js",
-    "static/js/787.5195973c.chunk.js": "/static/js/787.5195973c.chunk.js",
-    "index.html": "/index.html",
-    "main.073c9b0a.css.map": "/static/css/main.073c9b0a.css.map",
-    "main.fda4dac5.js.map": "/static/js/main.fda4dac5.js.map",
-    "787.5195973c.chunk.js.map": "/static/js/787.5195973c.chunk.js.map"
+    "main.css": "/gpt-prompt-templates/static/css/main.073c9b0a.css",
+    "main.js": "/gpt-prompt-templates/static/js/main.8cf6d17b.js",
+    "static/js/787.5195973c.chunk.js": "/gpt-prompt-templates/static/js/787.5195973c.chunk.js",
+    "index.html": "/gpt-prompt-templates/index.html",
+    "main.073c9b0a.css.map": "/gpt-prompt-templates/static/css/main.073c9b0a.css.map",
+    "main.8cf6d17b.js.map": "/gpt-prompt-templates/static/js/main.8cf6d17b.js.map",
+    "787.5195973c.chunk.js.map": "/gpt-prompt-templates/static/js/787.5195973c.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.073c9b0a.css",
-    "static/js/main.fda4dac5.js"
+    "static/js/main.8cf6d17b.js"
   ]
 }
