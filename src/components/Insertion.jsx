@@ -11,8 +11,8 @@ import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Modal from "@mui/material/Modal";
 import Link from "@mui/material/Link";
-import List from '@mui/material/List';
-import { ListItem } from "@mui/material";
+import List from "@mui/material/List";
+import ListItem from "@mui/material/ListItem";
 
 const styleModal = {
   position: "absolute",
@@ -91,16 +91,16 @@ export default function Insertion(props) {
                 />
               </Container>
               <Container>
-                プロンプト例：
-                <Typography variant="body1" gutterBottom>
-                  今日のセミナーの目次です。
-                  <List>
-                    <ListItem>## 目次：</ListItem>
-                    <ListItem>01．AIプロンプト　←テーマ</ListItem>
-                    <ListItem>[ここに挿入してください]</ListItem>
-                    <ListItem>10．まとめ  </ListItem>              
-                  </List>
-                </Typography>
+                プロンプト例：<br />
+                <List>
+                  <ListItem disablePadding>今日のセミナーの目次です。</ListItem>
+                  <ListItem disablePadding>## 目次：</ListItem>
+                  <ListItem disablePadding>
+                    01．AIプロンプト　←テーマ
+                  </ListItem>
+                  <ListItem disablePadding>[ここに挿入してください]</ListItem>
+                  <ListItem disablePadding>10．まとめ </ListItem>
+                </List>
               </Container>
             </CardContent>
           </Card>
@@ -119,13 +119,14 @@ export default function Insertion(props) {
           <Typography id="modal-modal-description" sx={{ mt: "2rem" }}>
             次のテーマに関するセミナーの目次を作成したいです。指示の部分に適切な内容を挿入してください。
             <br />
-            ## テーマ：<br />
+            ## テーマ：
+            <br />
             {context}
             <List>
               <ListItem>## 目次：</ListItem>
               <ListItem>01．{context}の紹介</ListItem>
               <ListItem>[指示：02～09を挿入してください]</ListItem>
-              <ListItem>10．まとめ  </ListItem>              
+              <ListItem>10．まとめ </ListItem>
             </List>
           </Typography>
         </Box>
