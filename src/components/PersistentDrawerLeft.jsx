@@ -21,7 +21,13 @@ import ListItemText from "@mui/material/ListItemText";
 import ArticleIcon from "@mui/icons-material/Article";
 import HomeIcon from "@mui/icons-material/Home";
 import Container from "@mui/material/Container";
-import { Summarization, QuestionAnswering, Classification, BlankTemplate } from "./index";
+import {
+  Summarization,
+  QuestionAnswering,
+  Classification,
+  Insertion,
+  BlankTemplate,
+} from "./index";
 
 const drawerWidth = 240;
 
@@ -91,7 +97,9 @@ export default function PersistentDrawerLeft() {
   ];
   const onClickItem = (textId) => {
     //指定位置までスクロールする
-    document.getElementById(textId).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    document
+      .getElementById(textId)
+      .scrollIntoView({ behavior: "smooth", block: "end", inline: "nearest" });
     setOpen(false);
   };
   return (
@@ -164,7 +172,9 @@ export default function PersistentDrawerLeft() {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        <header title="gpt-prompt-templates"  id="top">プロンプトテンプレート</header>
+        <header title="gpt-prompt-templates" id="top">
+          プロンプトテンプレート
+        </header>
         <Typography variant="h5" gutterBottom>
           プロンプト生成を補助するアプリです：
         </Typography>
@@ -182,7 +192,7 @@ export default function PersistentDrawerLeft() {
           <Classification title="Classification" />
         </Container>
         <Container id="insertion">
-          <BlankTemplate title="Insertion" />
+          <Insertion title="Insertion" />
         </Container>
         <Container id="rollPlay">
           <BlankTemplate title="RollPlay" />
