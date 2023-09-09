@@ -8,3 +8,4 @@ export { default as RollPlay } from './RollPlay'
 export { default as CodeGeneration } from './CodeGeneration'
 export { default as Reasoning } from './Reasoning'
 export { default as AbstractInfo } from './AbstractInfo'
+export { default as ModalBoard } from './ModalBoard';
