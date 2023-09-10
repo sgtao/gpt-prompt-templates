@@ -9,20 +9,9 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import Modal from "@mui/material/Modal";
 import Link from "@mui/material/Link";
-
-const styleModal = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "80%",
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import converPrompt from "../api/convertPrompt";
+import { ModalBoard } from "./index";
 
 export default function QuestionAnswering(props) {
   const titleContents = String(props.title);
@@ -44,11 +33,21 @@ export default function QuestionAnswering(props) {
       setContext(e.target.value);
     }
   };
-  const onClickConvert = () => {
+  const [convtext, setConvtext] = useState("");
+  const onClickConvert = async () => {
+
+    const todo = {
+      "type": "012_questionanswering",
+      "data01": question,
+      "data02": context,
+    }
+    const resPrompt = await converPrompt.post(todo);
+    console.log(resPrompt);
+    // setConvtext(convertedText);
+    setConvtext(resPrompt.prompt);
     setOpen(true);
   };
   const [open, setOpen] = React.useState(false);
-  const handleClose = () => setOpen(false);
 
   return (
     <React.Fragment>
@@ -114,29 +113,9 @@ export default function QuestionAnswering(props) {
           </Card>
         </Box>
       </Container>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={styleModal}>
-          <Typography id="modal-modal-title" variant="h6" component="h3">
-            プロンプト例：
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: "2rem" }}>
-            テキストに基づいて下記質問に答えてください。もし答えがない場合には、「私は知らない」と答えてください。
-            <br />
-            ## テキスト：
-            <br />
-            {context}
-            <br />
-            ## 質問：
-            <br />
-            {question}
-          </Typography>
-        </Box>
-      </Modal>
+
+      {/* 変換結果（プロンプト）を表示 */}
+      <ModalBoard open={open} setOpen={setOpen} textMessage={convtext} />
     </React.Fragment>
   );
 }
