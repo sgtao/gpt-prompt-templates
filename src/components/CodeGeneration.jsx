@@ -9,27 +9,15 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import Modal from "@mui/material/Modal";
 import Link from "@mui/material/Link";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
-
-const styleModal = {
-  position: "absolute",
-  top: "50%",
-  left: "50%",
-  transform: "translate(-50%, -50%)",
-  width: "80%",
-  bgcolor: "background.paper",
-  border: "2px solid #000",
-  boxShadow: 24,
-  p: 4,
-};
+import converPrompt from "../api/convertPrompt";
+import { ModalBoard } from "./index";
 
 export default function Classification(props) {
   const titleContents = String(props.title);
   const [context, setContext] = useState("");
-  const [language, setLanguage] = useState("JavaScript");
   const changeContext = (e) => {
     const result = e.target.value;
     if (result === "") {
@@ -38,14 +26,24 @@ export default function Classification(props) {
       setContext(e.target.value);
     }
   };
+  const [language, setLanguage] = useState("JavaScript");
   const selectChange = (event) => {
     setLanguage(event.target.value);
   };
-  const onClickConvert = () => {
+  const [convtext, setConvtext] = useState("");
+  const onClickConvert = async () => {
+
+    const todo = {
+      "type": "021_codegeneration",
+      "data01": context,
+      "data02": language,
+    }
+    const resPrompt = await converPrompt.post(todo);
+    // console.log(resPrompt);
+    setConvtext(resPrompt.prompt);
     setOpen(true);
   };
   const [open, setOpen] = React.useState(false);
-  const handleClose = () => setOpen(false);
 
   return (
     <React.Fragment>
@@ -132,31 +130,9 @@ export default function Classification(props) {
           </Card>
         </Box>
       </Container>
-      <Modal
-        open={open}
-        onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-      >
-        <Box sx={styleModal}>
-          <Typography id="modal-modal-title" variant="h6" component="h3">
-            プロンプト例：
-          </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: "2rem" }}>
-            やりたい事を実現するコードを生成してください。実現性が難しい場合、代替方法を提示してください。
-            <br />
-            ## やりたい事：
-            <br />- {context}
-            <br />
-            ## 条件：
-            <br />
-            - 生成する言語：{language}
-            <br />
-            ## コード：
-            <br />
-          </Typography>
-        </Box>
-      </Modal>
+
+      {/* 変換結果（プロンプト）を表示 */}
+      <ModalBoard open={open} setOpen={setOpen} textMessage={convtext} />
     </React.Fragment>
   );
 }
