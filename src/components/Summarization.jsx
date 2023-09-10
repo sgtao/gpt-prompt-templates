@@ -34,8 +34,7 @@ export default function Summarization(props) {
       "data01": originalText,
     }
     const resPrompt = await converPrompt.post(todo);
-    console.log(resPrompt);
-    // setConvtext(convertedText);
+    // console.log(resPrompt);
     setConvtext(resPrompt.prompt);
     setOpen(true);
   };

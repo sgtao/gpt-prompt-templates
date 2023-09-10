@@ -42,8 +42,7 @@ export default function QuestionAnswering(props) {
       "data02": context,
     }
     const resPrompt = await converPrompt.post(todo);
-    console.log(resPrompt);
-    // setConvtext(convertedText);
+    // console.log(resPrompt);
     setConvtext(resPrompt.prompt);
     setOpen(true);
   };
