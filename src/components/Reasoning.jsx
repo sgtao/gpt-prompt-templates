@@ -59,7 +59,7 @@ export default function Classification(props) {
               <Typography
                 sx={{ fontSize: "1.2rem" }}
                 color="text.secondary"
-                gutterBottom
+                gutterbottom="true"
               >
                 Reasoningでは、AIを論理的思考や推論のタスクへ導くプロンプトを生成します（
                 <Link

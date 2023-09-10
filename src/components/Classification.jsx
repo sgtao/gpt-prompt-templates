@@ -59,7 +59,7 @@ export default function Classification(props) {
               <Typography
                 sx={{ fontSize: "1.2rem" }}
                 color="text.secondary"
-                gutterBottom
+                gutterbottom="true"
               >
                 Classificationではテキストの文脈を分類するプロンプトを生成します（
                 <Link

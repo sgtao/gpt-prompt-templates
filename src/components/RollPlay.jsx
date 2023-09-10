@@ -70,7 +70,7 @@ export default function Classification(props) {
               <Typography
                 sx={{ fontSize: "1.2rem" }}
                 color="text.secondary"
-                gutterBottom
+                gutterbottom="true"
               >
                 RollPlayは、AI に役割を与えて会話を進めさせるテクニックです（
                 <Link
@@ -101,9 +101,9 @@ export default function Classification(props) {
               </Container>
               <Container sx={{ margin: "10px", display: "flex", justifyContent: 'space-between',}} >
                 <TextField label="Role-A" value={rollAsan}
-                 onChange={(eAsan) => setRollasan(eAsan.target.value)} />
+                  onChange={(eAsan) => setRollasan(eAsan.target.value)} />
                 <TextField label="Role-A" value={rollBsan}
-                 onChange={(eBsan) => setRollbsan(eBsan.target.value)} />
+                  onChange={(eBsan) => setRollbsan(eBsan.target.value)} />
               </Container>
               <Container sx={{ margin: "10px" }}>
                 <TextField

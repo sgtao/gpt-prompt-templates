@@ -1,5 +1,4 @@
-export { default as PersistentDrawerLeft } from './PersistentDrawerLeft'
-//
+// components/index.js
 export { default as Summarization } from './Summarization'
 export { default as QuestionAnswering } from './QuestionAnswering'
 export { default as Classification } from './Classification'

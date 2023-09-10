@@ -1,6 +1,6 @@
-// PersistentDrawerLeft.jsx
+// PromptDashboard.jsx
 import * as React from "react";
-import { styled, useTheme } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import { Link as Scroll } from "react-scroll";
 import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
@@ -13,7 +13,6 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
@@ -30,11 +29,13 @@ import {
   CodeGeneration,
   Reasoning,
   AbstractInfo,
-} from "./index";
+} from "../components/index";
 
 const drawerWidth = 240;
 
-const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
+const MainBox = styled("main", {
+  shouldForwardProp: (prop) => prop !== "open"
+})(
   ({ theme, open }) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
@@ -79,16 +80,11 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function PersistentDrawerLeft() {
+export default function PromptDashboard() {
   const title = "gpt-prompt-templates";
-  const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const handleDrawerOpen = () => {
-    setOpen(true);
-  };
-
-  const handleDrawerClose = () => {
-    setOpen(false);
+  const toggleDrawer = () => {
+    setOpen(!open);
   };
   const menuList = [
     "summarization",
@@ -114,7 +110,7 @@ export default function PersistentDrawerLeft() {
           <IconButton
             color="inherit"
             aria-label="open drawer"
-            onClick={handleDrawerOpen}
+            onClick={toggleDrawer}
             edge="start"
             sx={{ mr: 2, ...(open && { display: "none" }) }}
           >
@@ -139,12 +135,8 @@ export default function PersistentDrawerLeft() {
         open={open}
       >
         <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "ltr" ? (
-              <ChevronLeftIcon />
-            ) : (
-              <ChevronRightIcon />
-            )}
+          <IconButton onClick={toggleDrawer}>
+            <ChevronLeftIcon />
           </IconButton>
         </DrawerHeader>
         <Divider />
@@ -174,12 +166,15 @@ export default function PersistentDrawerLeft() {
           ))}
         </List>
       </Drawer>
-      <Main open={open}>
+      <MainBox open={open}>
         <DrawerHeader />
         <header title="gpt-prompt-templates" id="top">
           プロンプトテンプレート
         </header>
-        <Typography variant="h5" gutterBottom>
+        <Typography
+          variant="h5"
+          gutterbottom="true"
+        >
           プロンプト生成を補助するアプリです：
         </Typography>
         <Typography paragraph>
@@ -210,7 +205,7 @@ export default function PersistentDrawerLeft() {
         <Container id="reasoning">
           <Reasoning title="Reasoning" />
         </Container>
-      </Main>
+      </MainBox>
     </Box>
   );
 }

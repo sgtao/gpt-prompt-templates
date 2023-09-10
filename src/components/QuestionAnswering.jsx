@@ -68,7 +68,7 @@ export default function QuestionAnswering(props) {
               <Typography
                 sx={{ fontSize: "1.2rem" }}
                 color="text.secondary"
-                gutterBottom
+                gutterbottom="true"
               >
                 QuestionAnsweringでは前提となるコンテンツに対する質問プロンプトを生成します（
                 <Link

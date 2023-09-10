@@ -61,7 +61,7 @@ export default function Insertion(props) {
               <Typography
                 sx={{ fontSize: "1.2rem" }}
                 color="text.secondary"
-                gutterBottom
+                gutterbottom="true"
               >
                 Insertionではサフィックスプロンプトとプレフィックスプロンプトの間にテキストを挿入します
                 <Link
@@ -122,13 +122,13 @@ export default function Insertion(props) {
             ## テーマ：
             <br />
             {context}
-            <List>
-              <ListItem>## 目次：</ListItem>
-              <ListItem>01．{context}の紹介</ListItem>
-              <ListItem>[指示：02～09を挿入してください]</ListItem>
-              <ListItem>10．まとめ </ListItem>
-            </List>
           </Typography>
+          <List>
+            <ListItem>## 目次：</ListItem>
+            <ListItem>01．{context}の紹介</ListItem>
+            <ListItem>[指示：02～09を挿入してください]</ListItem>
+            <ListItem>10．まとめ </ListItem>
+          </List>
         </Box>
       </Modal>
     </React.Fragment>

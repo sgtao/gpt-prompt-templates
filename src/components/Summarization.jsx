@@ -59,7 +59,7 @@ export default function Summarization(props) {
               <Typography
                 sx={{ fontSize: "1.2rem" }}
                 color="text.secondary"
-                gutterBottom
+                gutterbottom="true"
               >
                 Summarizationでは要約指示のプロンプトを生成します（
                 <Link
