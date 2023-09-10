@@ -65,7 +65,7 @@ export default function Classification(props) {
               <Typography
                 sx={{ fontSize: "1.2rem" }}
                 color="text.secondary"
-                gutterBottom
+                gutterbottom="true"
               >
                 CodeGenerationではコード生成のプロンプトを生成します（
                 <Link

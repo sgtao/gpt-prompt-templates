@@ -1,11 +1,11 @@
 import './App.css';
-import { PersistentDrawerLeft } from './components/index';
+import { PromptDashboard } from './pages/index';
 
 function App() {
   return (
-    <div>
-      <PersistentDrawerLeft />
-    </div>
+    <>
+      <PromptDashboard />
+    </>
   );
 }
 

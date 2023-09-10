@@ -27,13 +27,15 @@ export default function AbstractInfo(props) {
             }}
           >
             <CardContent>
-              <Typography
+              <Box
                 sx={{ fontSize: "1.2rem" }}
                 color="text.secondary"
-                gutterBottom
+                gutterbottom="true"
               >
-                ChatAI向けのアプリです。基本的なプロンプト例の作成を補助します。<br />
-                対象とするサービスは下を想定しています。
+                <Typography>
+                  ChatAI向けのアプリです。基本的なプロンプト例の作成を補助します。<br />
+                  対象とするサービスは下を想定しています。
+                </Typography>
                 <List>
                 <ListItem disablePadding>
                     <Link href="https://chat.openai.com/chat" target="_blank">
@@ -51,7 +53,7 @@ export default function AbstractInfo(props) {
                     </Link>（Bingにアクセスしてください）
                   </ListItem>
                 </List>
-              </Typography>
+              </Box>
             </CardContent>
           </Card>
         </Box>
