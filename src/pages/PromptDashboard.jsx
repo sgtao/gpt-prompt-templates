@@ -25,10 +25,10 @@ import {
   QuestionAnswering,
   Classification,
   Insertion,
-  RollPlay,
   CodeGeneration,
   Reasoning,
   AbstractInfo,
+  RollPlayConsultant,
 } from "../components/index";
 
 const drawerWidth = 240;
@@ -91,9 +91,9 @@ export default function PromptDashboard() {
     "questionAnswering",
     "classification",
     "insertion",
-    "rollPlay",
     "codeGeneration",
     "reasoning",
+    "rollPlayConsultant",
   ];
   const onClickItem = (textId) => {
     //指定位置までスクロールする
@@ -196,14 +196,14 @@ export default function PromptDashboard() {
         <Container id="insertion">
           <Insertion title="Insertion" />
         </Container>
-        <Container id="rollPlay">
-          <RollPlay title="RollPlay" />
-        </Container>
         <Container id="codeGeneration">
           <CodeGeneration title="CodeGeneration" />
         </Container>
         <Container id="reasoning">
           <Reasoning title="Reasoning" />
+        </Container>
+        <Container id="rollPlayConsultant">
+          <RollPlayConsultant title="RollPlayConsultant" />
         </Container>
       </MainBox>
     </Box>
