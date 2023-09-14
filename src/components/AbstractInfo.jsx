@@ -12,6 +12,20 @@ import ListItem from "@mui/material/ListItem";
 
 export default function AbstractInfo(props) {
   const titleContents = String(props.title);
+  const linkItems = [
+    {
+      label: "Open-AI, Chat-GPT",
+      url: "https://chat.openai.com/chat"
+    },
+    {
+      label: "Google, Bard",
+      url: "https://bard.google.com/"
+    },
+    {
+      label: "Bing AI Chat",
+      url: "https://www.bing.com/search?q=Bing+AI&showconv=1&FORM=hpcodx"
+    },
+  ];
   return (
     <React.Fragment>
       <CssBaseline />
@@ -37,21 +51,17 @@ export default function AbstractInfo(props) {
                   対象とするサービスは下を想定しています。
                 </Typography>
                 <List>
-                <ListItem disablePadding>
-                    <Link href="https://chat.openai.com/chat" target="_blank">
-                      Open-AI, Chat-GPT
-                    </Link>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <Link href="https://bard.google.com/" target="_blank">
-                      Google, Bard
-                    </Link>
-                  </ListItem>
-                  <ListItem disablePadding>
-                    <Link href="https://web.skype.com/" target="_blank">
-                      Microsoft, Web Skype
-                    </Link>（Bingにアクセスしてください）
-                  </ListItem>
+                  {
+                    linkItems.map((item, index) => {
+                      return (
+                      <ListItem key={index} disablePadding>
+                        <Link href={item.url} target="_blank">
+                          {item.label}
+                        </Link>
+                      </ListItem>
+                      );
+                    })
+                  }
                 </List>
               </Box>
             </CardContent>
