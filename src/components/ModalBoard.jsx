@@ -3,6 +3,7 @@ import * as React from "react";
 import Modal from "@mui/material/Modal";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
 
 const styleModal = {
     position: "absolute",
@@ -26,6 +27,11 @@ const ModalBoard = (props) => {
             <br />
         </React.Fragment>
     ));
+    // テキストをクリップボードにコピー
+    const copyToClipboard = async () => {
+        await navigator.clipboard.writeText(props.textMessage);
+        alert("テキストがクリップボードにコピーされました！");
+    };
     return (
         <Modal
             open={props.open}
@@ -44,6 +50,9 @@ const ModalBoard = (props) => {
                 }}>
                     {textWithLineBreaks}
                 </Typography>
+                <Button variant="contained" onClick={copyToClipboard}>
+                    テキストをコピー
+                </Button>
             </Box>
         </Modal>
     );
