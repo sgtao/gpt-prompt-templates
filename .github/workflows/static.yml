@@ -35,7 +35,7 @@ jobs:
         with:
           # Deploy keysやPersonal access Tokensも使用可能
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build
+          publish_dir: ./dist
           # keep_filesをtrueにすると、git pushの度に一旦全てのファイルが削除される挙動を抑制できる
           # keep_files: true
           user_name: github-actions
