@@ -7,4 +7,5 @@ export default defineConfig({
   server: {
     port: 3000 // ポート番号を指定
   },
+  base: '/gpt-prompt-templates/' // GitHubリポジトリ名に置き換える
 })
