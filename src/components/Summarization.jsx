@@ -14,6 +14,7 @@ import converPrompt from "../api/convertPrompt";
 import { ModalBoard } from "./index";
 
 export default function Summarization(props) {
+  // eslint-disable-next-line react/prop-types
   const titleContents = String(props.title);
   const [text, setText] = useState("");
   const [convtext, setConvtext] = useState("");

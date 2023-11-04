@@ -1,7 +1,7 @@
 // ModalBoard.test.js
 import React from "react";
 import { render, screen, fireEvent } from "@testing-library/react";
-import ModalBoard from "../ModalBoard";
+import ModalBoard from "../components/ModalBoard";
 
 // window.alertをモック化する
 const alertMock = jest.spyOn(window, "alert").mockImplementation(() => {});

@@ -31,7 +31,7 @@ import {
   RollPlayConsultant,
 } from "../components/index";
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const MainBox = styled("main", {
   shouldForwardProp: (prop) => prop !== "open"
@@ -160,7 +160,7 @@ export default function PromptDashboard() {
                 <ListItemIcon>
                   <ArticleIcon />
                 </ListItemIcon>
-                <ListItemText primary={text} />
+                <ListItemText primary={`${(index+1)}.${text}`} />
               </ListItemButton>
             </ListItem>
           ))}

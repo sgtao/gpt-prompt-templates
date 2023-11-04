@@ -11,6 +11,7 @@ import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 
 export default function AbstractInfo(props) {
+  // eslint-disable-next-line react/prop-types
   const titleContents = String(props.title);
   const linkItems = [
     {
