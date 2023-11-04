@@ -18,9 +18,11 @@ const styleModal = {
 };
 
 const ModalBoard = (props) => {
+    // eslint-disable-next-line react/prop-types
     const handleClose = () => props.setOpen(false);
     // const convertedText = props.textMessage.replace(/\n/g, '<br />');
     // 改行を含むテキストを改行要素で表示
+    // eslint-disable-next-line react/prop-types
     const textWithLineBreaks = props.textMessage.split("\n").map((line, index) => (
         <React.Fragment key={index}>
             {line}
@@ -29,12 +31,15 @@ const ModalBoard = (props) => {
     ));
     // テキストをクリップボードにコピー
     const copyToClipboard = async () => {
+        // eslint-disable-next-line react/prop-types
         await navigator.clipboard.writeText(props.textMessage);
         alert("テキストがクリップボードにコピーされました！");
     };
+    // eslint-disable-next-line react/prop-types
+    let open = props.open;
     return (
         <Modal
-            open={props.open}
+            open={open}
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"

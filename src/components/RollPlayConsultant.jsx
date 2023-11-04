@@ -15,26 +15,31 @@ import converPrompt from "../api/convertPrompt";
 import { ModalBoard } from "./index";
 
 function SelectorComponent(props) {
-    const { label, value, onChange, options } = props;
-    return (
-      <TextField
-        sx={{ width: "90%" }}
-        select
-        label={label}
-        variant="outlined"
-        value={value}
-        onChange={onChange}
-      >
-        {options.map((option) => (
+  // eslint-disable-next-line react/prop-types
+  const { label, value, onChange, options } = props;
+  return (
+    <TextField
+      sx={{ width: "90%" }}
+      select
+      label={label}
+      variant="outlined"
+      value={value}
+      onChange={onChange}
+    >
+      {
+        // eslint-disable-next-line react/prop-types
+        options.map((option) => (
           <MenuItem key={option.value} value={option.value}>
             {option.label}
           </MenuItem>
-        ))}
-      </TextField>
-    );
-  }
+        ))
+      }
+    </TextField>
+  );
+}
 
 export default function RollPlayConsultant(props) {
+  // eslint-disable-next-line react/prop-types
   const titleContents = String(props.title);
   const [chatRoll, setChatRoll] = useState("");
   const changeChatRoll = (e) => {
@@ -133,11 +138,11 @@ export default function RollPlayConsultant(props) {
               </Container>
               <Container sx={{ margin: "10px" }}>
                 <SelectorComponent
-                    label="ChatRoll"
-                    value={chatRoll}
-                    onChange={changeChatRoll}
-                    options={chatRollOptions}
-                    />
+                  label="ChatRoll"
+                  value={chatRoll}
+                  onChange={changeChatRoll}
+                  options={chatRollOptions}
+                />
               </Container>
               <Container sx={{ margin: "5px", marginLeft: "10px" }}>
                 <SelectorComponent

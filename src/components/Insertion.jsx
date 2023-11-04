@@ -16,6 +16,7 @@ import converPrompt from "../api/convertPrompt";
 import { ModalBoard } from "./index";
 
 export default function Insertion(props) {
+  // eslint-disable-next-line react/prop-types
   const titleContents = String(props.title);
   const [context, setContext] = useState("");
   const changeContext = (e) => {
@@ -91,9 +92,7 @@ export default function Insertion(props) {
                 <List>
                   <ListItem disablePadding>今日のセミナーの目次です。</ListItem>
                   <ListItem disablePadding>## 目次：</ListItem>
-                  <ListItem disablePadding>
-                    01．AIプロンプト　←テーマ
-                  </ListItem>
+                  <ListItem disablePadding>01．AIプロンプト←テーマ</ListItem>
                   <ListItem disablePadding>[ここに挿入してください]</ListItem>
                   <ListItem disablePadding>10．まとめ </ListItem>
                 </List>

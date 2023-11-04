@@ -14,6 +14,7 @@ import converPrompt from "../api/convertPrompt";
 import { ModalBoard } from "./index";
 
 export default function QuestionAnswering(props) {
+  // eslint-disable-next-line react/prop-types
   const titleContents = String(props.title);
   const [question, setQuestion] = useState("");
   const changeQuestion = (e) => {
