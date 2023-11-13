@@ -59,13 +59,24 @@ export default function RollPlayConsultant(props) {
       setYourState(e.target.value);
     }
   };
+  const [yourWant, setYourWant] = useState("");
+  const changeYourWant = (e) => {
+    const result = e.target.value;
+    if (result === "") {
+      setYourWant("");
+    } else {
+      setYourWant(e.target.value);
+    }
+  };
   const [convtext, setConvtext] = useState("");
   const onClickConvert = async () => {
 
     const todo = {
       "type": "031_rollplay_consulting",
       "data01": chatRoll,
-      "data02": yourState,
+      "data02": (yourWant !== "") ?
+        `${yourState}感情で、${yourWant}をしたい` :
+        `${yourState}`,
       "data03": "ここ１週間の調子はどうですか？"
     }
     const resPrompt = await converPrompt.post(todo);
@@ -169,6 +180,14 @@ export default function RollPlayConsultant(props) {
                   value={yourState}
                   onChange={changeYourState}
                   options={yourStateOptions}
+                />
+              </Container>
+              <Container sx={{ margin: "10px" }}>
+                <TextField
+                  sx={{ width: "90%", minWidth: "90%", maxWidth: "90%" }}
+                  label="YourWant"
+                  value={yourWant}
+                  onChange={changeYourWant}
                 />
               </Container>
             </CardContent>
