@@ -8,7 +8,6 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import Link from "@mui/material/Link";
 import MenuItem from "@mui/material/MenuItem";
 import converPrompt from "../api/convertPrompt";
 import { ModalBoard } from "./index";
@@ -41,11 +40,9 @@ function SelectorComponent(props) {
 function CodingSupportForm({
   titleContents,
   language,
-  setLanguage,
   languageOptions,
   selectLanguage,
   instruction,
-  setInstruction,
   instructionOptions,
   changeInstruction,
   context,
