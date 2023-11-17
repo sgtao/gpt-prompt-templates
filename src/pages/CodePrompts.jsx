@@ -10,11 +10,13 @@ import {
 import ArticleIcon from "@mui/icons-material/Article";
 import {
     CodeGeneration,
+    CodingSupport,
 } from "../components/index";
 
 export default function CodePrompts() {
     const menuList = [
         "codeGeneration",
+        "CodingSupport",
     ];
     const onClickItem = (textId) => {
         //指定位置までスクロールする
@@ -43,6 +45,9 @@ export default function CodePrompts() {
             </header>
             <Container id="codeGeneration">
                 <CodeGeneration title="CodeGeneration" />
+            </Container>
+            <Container id="CodingSupport">
+                <CodingSupport title="CodingSupport" />
             </Container>
         </>
     );
