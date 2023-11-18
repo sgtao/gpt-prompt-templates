@@ -3,6 +3,7 @@
 export { default as Navbar } from './Navbar'
 export { default as ModalBoard } from './ModalBoard';
 export { default as AbstractInfo } from './AbstractInfo'
+export { default as SelectorComponent } from './SelectorComponent'
 // prompt-templates
 export { default as Summarization } from './Summarization'
 export { default as QuestionAnswering } from './QuestionAnswering'

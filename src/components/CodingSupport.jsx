@@ -8,37 +8,10 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
-import MenuItem from "@mui/material/MenuItem";
 import converPrompt from "../api/convertPrompt";
-import { ModalBoard } from "./index";
-
-// コンポーネントを分割
-function SelectorComponent(props) {
-  // eslint-disable-next-line react/prop-types
-  const { label, value, onChange, options } = props;
-  return (
-    <TextField
-      sx={{ width: "90%", minWidth: "12em"  }}
-      select
-      label={label}
-      variant="outlined"
-      value={value}
-      onChange={onChange}
-    >
-      {
-        // eslint-disable-next-line react/prop-types
-        options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))
-      }
-    </TextField>
-  );
-}
+import { SelectorComponent, ModalBoard } from "./index";
 
 function CodingSupportForm({
-  titleContents,
   language,
   languageOptions,
   selectLanguage,
@@ -66,6 +39,7 @@ function CodingSupportForm({
     <Card
       sx={cardStyles}
     >
+      <CssBaseline />
       <CardContent>
         <Typography
           sx={{ fontSize: "1.2rem" }}
@@ -178,7 +152,6 @@ export default function CodingSupport(props) {
           <h3>{String(props.title)}</h3>
           {/* Formコンポーネントを呼び出し */}
           <CodingSupportForm
-            titleContents={props.title}
             language={language}
             setLanguage={setLanguage}
             languageOptions={languageOptions}

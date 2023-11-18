@@ -13,7 +13,7 @@ import Link from "@mui/material/Link";
 import Select from "@mui/material/Select";
 import MenuItem from "@mui/material/MenuItem";
 import converPrompt from "../api/convertPrompt";
-import { ModalBoard } from "./index";
+import { SelectorComponent, ModalBoard } from "./index";
 
 export default function Classification(props) {
   // eslint-disable-next-line react/prop-types
