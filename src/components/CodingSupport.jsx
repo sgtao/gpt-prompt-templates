@@ -9,92 +9,10 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import converPrompt from "../api/convertPrompt";
-import { SelectorComponent, ModalBoard } from "./index";
-
-function CodingSupportForm({
-  language,
-  languageOptions,
-  selectLanguage,
-  instruction,
-  instructionOptions,
-  changeInstruction,
-  context,
-  changeContext,
-  onClickConvert,
-}) {
-  // スタイルオブジェクトの切り分け
-  const cardStyles = {
-    margin: "0 auto",
-    maxWidth: "90%",
-    minWidth: 275,
-    height: "90%",
-  };
-
-  const containerStyles = {
-    display: "flex",
-    justifyContent: "space-between",
-    margin: "10px",
-  };
-  return (
-    <Card
-      sx={cardStyles}
-    >
-      <CssBaseline />
-      <CardContent>
-        <Typography
-          sx={{ fontSize: "1.2rem" }}
-          color="text.secondary"
-          gutterBottom
-        >
-          CodingSupportでは既存のコードに対して補助するプロンプトを生成します。
-        </Typography>
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          言語指定(Language)を行い、指示(Instruction)とコード(Contents)を入力して『Convert』ボタンをクリックしてください。
-        </Typography>
-        <Container sx={containerStyles}>
-          <Button
-            sx={{ margin: "10px" }}
-            variant="outlined"
-            onClick={onClickConvert}
-          >
-            Convert
-          </Button>
-          <div sx={{ marginLeft: "10px"}}>
-            {/* コンポーネントを再利用 */}
-            <SelectorComponent
-              label="Language"
-              value={language}
-              onChange={selectLanguage}
-              options={languageOptions}
-            />
-          </div>
-        </Container>
-        <Container sx={containerStyles}>
-          {/* コンポーネントを再利用 */}
-          <SelectorComponent
-            label="Instruction"
-            value={instruction}
-            onChange={changeInstruction}
-            options={instructionOptions}
-          />
-        </Container>
-        <Container sx={containerStyles}>
-          <TextField
-            sx={{ m: 1, width: "90%" }}
-            label="Code"
-            multiline
-            rows={4}
-            value={context}
-            onChange={changeContext}
-          />
-        </Container>
-      </CardContent>
-    </Card>
-  );
-}
+import { SelectorComponent, FormWith2Sel1MultiText, ModalBoard } from "./index";
 
 export default function CodingSupport(props) {
-  const [language, setLanguage] = useState("JavaScript");
+  const [language, setLanguage] = useState("");
   const languageOptions = [
     { label: "JavaScript", value: "JavaScript" },
     { label: "Python", value: "Python" },
@@ -105,10 +23,10 @@ export default function CodingSupport(props) {
     { label: "PowerShell", value: "PowerShell" },
     // 他の選択肢を追加できます
   ];
-  const selectLanguage = (event) => {
-    setLanguage(event.target.value);
+  const selectLanguage = (e) => {
+    setLanguage(e.target.value);
   };
-  const [instruction, setInstruction] = useState("コード解説");
+  const [instruction, setInstruction] = useState("");
   const instructionOptions = [
     { label: "コード解説", value: "コードの解説をしてください。" },
     { label: "コメント挿入", value: "コードにコメントを追加してください。" },
@@ -119,17 +37,28 @@ export default function CodingSupport(props) {
     // 他の選択肢を追加できます
   ];
   const changeInstruction = (e) => {
-    const result = e.target.value;
-    if (result === "") {
-      setInstruction("");
-    } else {
-      setInstruction(e.target.value);
-    }
+    setInstruction(e.target.value);
+  };
+  const headDescriptionn = () => {
+    return (
+      <>
+        <Typography
+          sx={{ fontSize: "1.2rem" }}
+          color="text.secondary"
+          gutterBottom
+        >
+          CodingSupportでは既存のコードに対して補助するプロンプトを生成します。
+        </Typography>
+        <Typography sx={{ mb: 1.5 }} color="text.secondary">
+          言語指定(Language)を行い、指示(Instruction)とコード(Contents)を入力して『Convert』ボタンをクリックしてください。
+        </Typography>
+      </>
+    );
   };
 
   const [context, setContext] = useState("");
-  const [convtext, setConvtext] = useState("");
-  const [open, setOpen] = React.useState(false);
+  const [prompt, setPrompt] = useState("");
+  const [modalOpen, setModalOpen] = React.useState(false);
 
   const onClickConvert = async () => {
     const todo = {
@@ -139,8 +68,8 @@ export default function CodingSupport(props) {
       data03: context,
     };
     const resPrompt = await converPrompt.post(todo);
-    setConvtext(resPrompt.prompt);
-    setOpen(true);
+    setPrompt(resPrompt.prompt);
+    setModalOpen(true);
   };
 
   return (
@@ -151,7 +80,8 @@ export default function CodingSupport(props) {
           {/* タイトル表示 */}
           <h3>{String(props.title)}</h3>
           {/* Formコンポーネントを呼び出し */}
-          <CodingSupportForm
+          <FormWith2Sel1MultiText
+            headDescriptionn={headDescriptionn()}
             language={language}
             setLanguage={setLanguage}
             languageOptions={languageOptions}
@@ -168,7 +98,7 @@ export default function CodingSupport(props) {
       </Container>
 
       {/* 変換結果（プロンプト）を表示 */}
-      <ModalBoard open={open} setOpen={setOpen} textMessage={convtext} />
+      <ModalBoard open={modalOpen} setOpen={setModalOpen} textMessage={prompt} />
     </React.Fragment>
   );
 }

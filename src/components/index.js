@@ -4,6 +4,7 @@ export { default as Navbar } from './Navbar'
 export { default as ModalBoard } from './ModalBoard';
 export { default as AbstractInfo } from './AbstractInfo'
 export { default as SelectorComponent } from './SelectorComponent'
+export { default as FormWith2Sel1MultiText } from './FormWith2Sel1MultiText'
 // prompt-templates
 export { default as Summarization } from './Summarization'
 export { default as QuestionAnswering } from './QuestionAnswering'
