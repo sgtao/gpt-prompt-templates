@@ -3,13 +3,9 @@ import React, { useState } from "react";
 import CssBaseline from "@mui/material/CssBaseline";
 import Box from "@mui/material/Box";
 import Container from "@mui/material/Container";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import TextField from "@mui/material/TextField";
 import converPrompt from "../api/convertPrompt";
-import { SelectorComponent, FormWith2Sel1MultiText, ModalBoard } from "./index";
+import { FormWith2Sel1MultiText, ModalBoard } from "./index";
 
 export default function CodingSupport(props) {
   const [language, setLanguage] = useState("");
