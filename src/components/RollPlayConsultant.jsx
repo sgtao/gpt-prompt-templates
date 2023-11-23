@@ -10,33 +10,8 @@ import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import TextField from "@mui/material/TextField";
 import Link from "@mui/material/Link";
-import MenuItem from "@mui/material/MenuItem";
 import converPrompt from "../api/convertPrompt";
-import { ModalBoard } from "./index";
-
-function SelectorComponent(props) {
-  // eslint-disable-next-line react/prop-types
-  const { label, value, onChange, options } = props;
-  return (
-    <TextField
-      sx={{ width: "90%" }}
-      select
-      label={label}
-      variant="outlined"
-      value={value}
-      onChange={onChange}
-    >
-      {
-        // eslint-disable-next-line react/prop-types
-        options.map((option) => (
-          <MenuItem key={option.value} value={option.value}>
-            {option.label}
-          </MenuItem>
-        ))
-      }
-    </TextField>
-  );
-}
+import { SelectorComponent, ModalBoard } from "./index";
 
 export default function RollPlayConsultant(props) {
   // eslint-disable-next-line react/prop-types
