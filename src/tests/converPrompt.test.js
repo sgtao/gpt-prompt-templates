@@ -10,9 +10,9 @@ const test_URL = 'https://sgtaowebapi-1-b9620003.deta.app/api/gpttemplate/prompt
 describe('test convertPrompt', () => {
     afterEach(() => jest.restoreAllMocks())
     it('post function should make a POST request and return data', async () => {
-        const testData = "testDataResponse";
 
         // axiosモックの振る舞いを設定
+        const testData = { prompt: "testDataResponse"};
         axios.post.mockResolvedValue({
             "status": 200,
             "data": testData,
